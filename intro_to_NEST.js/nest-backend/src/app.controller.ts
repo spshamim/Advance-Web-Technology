@@ -1,11 +1,16 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller() // no controller route
+@Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('home') // only action route present here
+  @Get()
+  getBlank(): object {
+    return this.appService.getBlank();
+  }
+  
+  @Get('home')
   getHome(): object {
     return this.appService.getHome();
   }

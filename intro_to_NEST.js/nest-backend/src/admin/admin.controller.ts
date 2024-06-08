@@ -4,6 +4,11 @@ import { AdminService } from "./admin.service";
 @Controller('admin') // controller route
 export class AdminController {
 constructor(private readonly adminService:AdminService){}    
+    @Get()
+    getBlank(): object {
+        return this.adminService.getBlank();
+    }
+
     @Get('home') // action route
     getAdmin(): object {
         return this.adminService.getAdmin();
@@ -14,7 +19,7 @@ constructor(private readonly adminService:AdminService){}
         return this.adminService.getAdminById(id); // passing the id
     }
 
-    @Get('getbynameandid')
+    @Get('more')
     getAdminByNameAndId(@Query('name') name:string, @Query('id') id: number): object {
         return this.adminService.getAdminByNameAndId(name, id);
     }

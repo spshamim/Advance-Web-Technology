@@ -3,8 +3,12 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class AdminService {
+    getBlank(): object {
+        return {message : 'Blank Route From Admin Controller!'};
+    }
+    
     getAdmin(): object {
-        return {message : 'Admin Home Page'};
+        return {message:'This is Admin Home Page -- info : Admin Controller, getAdmin() Action'};
     }
 
     getAdminById(id : number): object {
