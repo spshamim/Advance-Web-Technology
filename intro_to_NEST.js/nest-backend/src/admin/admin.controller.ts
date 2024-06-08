@@ -1,12 +1,10 @@
 import { Controller, Get, Query, Param } from "@nestjs/common";
 import { AdminService } from "./admin.service";
 
-@Controller('admin')
+@Controller('admin') // controller route
 export class AdminController {
 constructor(private readonly adminService:AdminService){}    
-    @Get('home')
-    // need to use a path, coz initial one (blank one) used by AppModule(main.ts is loading AppModule)
-    // if path not given then app will return either 'Hello World' which is in AppModule or Give Error 404 not found
+    @Get('home') // action route
     getAdmin(): object {
         return this.adminService.getAdmin();
     }
