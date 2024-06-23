@@ -76,16 +76,15 @@ the following API endpoints:
 **Endpoint:** `GET /admin/`
 **Endpoint:** `POST /admin/`
 **Description:** Retrieve an admin by their unique ID. 
-![GET](https://img.shields.io/badge/GET-blue)
-![POST](https://img.shields.io/badge/POST-green)
+**Method:** ![GET](https://img.shields.io/badge/GET-blue)
+**Method:** ![POST](https://img.shields.io/badge/POST-green)
 
 ## Param and Query Manipulated
 
-** Endpoint: `GET /admin/`
+**Endpoint: `GET /admin/`
 - **Description:** Retrieve an admin by their unique ID and Name 
 - **Method:** ![GET](https://img.shields.io/badge/GET-blue)
----
-** Endpoint: `POST /admin/`
+**Endpoint: `POST /admin/`
 - **Description:** Create or update an admin record
 - **Method:** ![POST](https://img.shields.io/badge/POST-green)
 
