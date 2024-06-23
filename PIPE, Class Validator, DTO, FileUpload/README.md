@@ -5,67 +5,116 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+ # NestJS Backend API 🚀
 
-## Description
+[![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)](https://nestjs.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A high-performance, scalable, and developer-friendly backend API built with NestJS, TypeScript, and Node.js. This codebase provides a solid foundation for building robust and efficient APIs for your web applications.
 
-## Installation
+## Key Features
 
-```bash
-$ npm install
-```
+- **Modular Architecture**: NestJS promotes a modular and scalable architecture, making it easy to organize and maintain your codebase as your application grows.
+- **TypeScript Support**: TypeScript brings static typing, better tooling, and improved developer productivity to your Node.js applications.
+- **Data Validation**: Built-in support for data validation using the powerful `class-validator` library, ensuring data integrity and security.
+- **Class Serialization**: Seamless class serialization and deserialization with `class-transformer`, simplifying data transformation tasks.
+- **File Uploads**: Effortless file upload handling with the `multer` middleware, enabling support for multipart/form-data requests.
+- **Testing Ready**: Unit and end-to-end (e2e) testing setup out of the box, ensuring code quality and maintainability.
+- **ORM Agnostic**: Flexibility to choose and integrate with any Node.js ORM (Object-Relational Mapping) library, such as Sequelize, Mongoose, or TypeORM.
+- **Dependency Injection**: Clean and decoupled code through dependency injection, promoting code reusability and testability.
 
-## Running the app
+## Getting Started
 
-```bash
-# development
-$ npm run start
+### Prerequisites
 
-# watch mode
-$ npm run start:dev
+- [Node.js](https://nodejs.org/) (>= 14.x)
+- [npm](https://www.npmjs.com/) (>= 6.x)
 
-# production mode
-$ npm run start:prod
-```
+### Installation
 
-## Test
+1. Clone the repository:
 
-```bash
-# unit tests
-$ npm run test
+bash
+git clone https://github.com/your-username/nestjs-backend.git
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
 
-## Support
+#### Navigate to the project directory:
+cd nestjs-backend
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+
+
+#### Install dependencies:
+npm install
+
+
+
+#### Running the App
+Development
+npm run start:dev
+
+
+
+This will start the development server and watch for changes in your files, automatically restarting the server when needed.
+
+#### Production
+npm run build
+npm run start:prod
+
+
+
+This will build the production-ready version of your application and start the server.
+
+Testing
+This codebase comes with a testing setup ready to go. You can run the following commands to execute tests:
+the following API endpoints:
+
+# Admin API Endpoints
+
+## Get Admin by ID
+**Endpoint:** `GET /admin/get/{id}`  
+**Description:** Retrieve an admin by their unique ID.  
+![GET](https://img.shields.io/badge/GET-blue)
+
+## Get Admin by Name and ID
+**Endpoint:** `GET /admin/getbynameandid`  
+**Description:** Retrieve an admin by their name and ID.  
+![GET](https://img.shields.io/badge/GET-blue)
+
+## Get Admin Object
+**Endpoint:** `GET /admin/getadmin`  
+**Description:** Retrieve the admin object.  
+![GET](https://img.shields.io/badge/GET-blue)
+
+## Add a New Admin
+**Endpoint:** `POST /admin/addadmin`  
+**Description:** Add a new admin to the system.  
+![POST](https://img.shields.io/badge/POST-green)
+
+## Update an Existing Admin
+**Endpoint:** `PUT /admin/updateadmin/{id}`  
+**Description:** Update an existing admin’s details.  
+![PUT](https://img.shields.io/badge/PUT-yellow)
+
+## Add an Image
+**Endpoint:** `POST /admin/addimage`  
+**Description:** Upload and add an image.  
+![POST](https://img.shields.io/badge/POST-green)
+
+## Get an Image
+**Endpoint:** `GET /admin/getimage/{name}`  
+**Description:** Retrieve an image by its name.  
+![GET](https://img.shields.io/badge/GET-blue)
+
+
 
 ## Stay in touch
 
-- Author - [Shamim](https://github.com/spshamim)
+- Author - [Shahriar Parvez](https://github.com/spshamim)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- LinkedIn - [Profile](https://www.linkedin.com/in/spshamim/)
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+  Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
