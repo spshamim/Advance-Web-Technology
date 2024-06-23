@@ -72,41 +72,25 @@ the following API endpoints:
 
 # Admin API Endpoints
 
-## Get Admin by ID
-**Endpoint:** `GET /admin/get/{id}`  
-**Description:** Retrieve an admin by their unique ID.  
+## Get Admin by ID (Transformation)
+**Endpoint:** `GET /admin/test3/{id}`  
+**Description:** Retrieve an admin by their unique ID. There ParseIntPipe used for transformation.  
 ![GET](https://img.shields.io/badge/GET-blue)
 
-## Get Admin by Name and ID
-**Endpoint:** `GET /admin/getbynameandid`  
-**Description:** Retrieve an admin by their name and ID.  
-![GET](https://img.shields.io/badge/GET-blue)
-
-## Get Admin Object
-**Endpoint:** `GET /admin/getadmin`  
+## Get Admin Object (DTO Used)
+**Endpoint:** `GET /admin/test2`  
 **Description:** Retrieve the admin object.  
 ![GET](https://img.shields.io/badge/GET-blue)
 
-## Add a New Admin
-**Endpoint:** `POST /admin/addadmin`  
-**Description:** Add a new admin to the system.  
-![POST](https://img.shields.io/badge/POST-green)
-
-## Update an Existing Admin
-**Endpoint:** `PUT /admin/updateadmin/{id}`  
-**Description:** Update an existing admin’s details.  
-![PUT](https://img.shields.io/badge/PUT-yellow)
-
-## Add an Image
-**Endpoint:** `POST /admin/addimage`  
+## Add an Image (FileInterceptor, UploadFile)
+**Endpoint:** `POST /admin/upload`  
 **Description:** Upload and add an image.  
 ![POST](https://img.shields.io/badge/POST-green)
 
 ## Get an Image
-**Endpoint:** `GET /admin/getimage/{name}`  
+**Endpoint:** `GET /admin/getfile/{name}`  
 **Description:** Retrieve an image by its name.  
 ![GET](https://img.shields.io/badge/GET-blue)
-
 
 
 ## Stay in touch
