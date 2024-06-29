@@ -2,6 +2,7 @@ import { Body, Controller, Get, Param, ParseIntPipe, Post, Delete, Res, Uploaded
 import { AdminService } from "./admin.service";
 import { Admins } from "src/Entity/admin.entity";
 import { AdminDTOForEntity } from "src/DTO/admin.dto";
+import { Managers } from "src/Entity/manager.entity";
 
 @Controller('admin')
 export class AdminController {
@@ -50,5 +51,21 @@ constructor(private readonly adminService:AdminService) {}
       @Body() updateAdminDto: AdminDTOForEntity, // validation of data before going to service
     ): Promise<Admins> {                        // that's why DTO used
       return await this.adminService.updateAdmin(id, updateAdminDto);
+    }
+
+    /*  -------------------- Manager Operation  --------------------  */
+
+    @Post('addmanager/:adminId')
+    addManager(
+      @Param('adminId') adminId,
+      @Body() mn: Managers
+      ): Promise<Managers> {
+      return this.adminService.addManager(adminId, mn);
+    }
+
+    /*  Viewing admins and its related managers */
+    @Get('getadminwithmanagers')
+    getAdminwithmanagers(): Promise<Admins[]> {
+      return this.adminService.getAdminwithmanagers();
     }
 }

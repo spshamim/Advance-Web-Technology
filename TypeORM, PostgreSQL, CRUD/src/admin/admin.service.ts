@@ -1,11 +1,16 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { ManagerDTOForEntity } from "src/DTO/manager.dto";
 import { Admins } from "src/Entity/admin.entity";
+import { Managers } from "src/Entity/manager.entity";
 import { Repository } from "typeorm";
 
 @Injectable()
 export class AdminService{
-constructor(@InjectRepository(Admins) private adminRepo:Repository<Admins>) {} //adminRepo is local repository
+    constructor(
+        @InjectRepository(Admins) private adminRepo: Repository<Admins>,
+        @InjectRepository(Managers) private managerRepo: Repository<Managers>
+      ) {}
 
     async createAdmin(admins:Admins) : Promise<Admins> {
         try {
@@ -55,4 +60,22 @@ constructor(@InjectRepository(Admins) private adminRepo:Repository<Admins>) {} /
         */
     }
 
+    /*  -------------------- Manager Operation  --------------------  */
+
+    addManager(adminId, mn: Managers) : Promise<Managers> {
+        try {
+            mn.admin = adminId; // saying manager table has admin fk that will be adminId
+            return this.managerRepo.save(mn);
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+
+    getAdminwithmanagers(): Promise<Admins[]> {
+        try {
+            return this.adminRepo.find({relations:["managers"], select : {managers : {name:true}}});
+        } catch (error) {                       // managers is property defined in Admins Entity
+            throw new Error(error.message);     // Viewing managers name only 
+        }
+    }
 }

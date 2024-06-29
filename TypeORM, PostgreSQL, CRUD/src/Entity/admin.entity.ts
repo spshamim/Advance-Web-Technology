@@ -1,15 +1,27 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Managers } from "./manager.entity";
 
-@Entity()
+@Entity('admins')
 export class Admins {
     @PrimaryGeneratedColumn()
     id: number;
+
     @Column()
-    name: string;
+    fullname: string;
+
     @Column()
-    address: string;
+    username: string;
+
     @Column()
-    email: string;
-    @Column()
-    type: number;
+    password: string;
+
+    @OneToMany(()=>Managers, manager => manager.admin) 
+    managers: Managers[];
+    /*  
+        admin can have many managers
+        target class : Managers
+        manager : parameter / reference
+        admin : property of the Managers Class
+        managers: Managers[] = manager property holding a list of object of Managers Class 
+    */
 }

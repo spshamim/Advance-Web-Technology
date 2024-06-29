@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AdminModule } from './admin/admin.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ManagerModule } from './Manager/manager.module';
 
 @Module({
   imports: [AdminModule,TypeOrmModule.forRoot({
@@ -14,7 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     database:"Test",
     autoLoadEntities:true,
     synchronize:true
-  }),],
+  }),ManagerModule],
   controllers: [AppController],
   providers: [AppService],
 })

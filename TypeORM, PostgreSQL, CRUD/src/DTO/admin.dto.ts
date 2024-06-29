@@ -2,26 +2,26 @@ import { IsNotEmpty, IsOptional, Matches, MaxLength, MinLength } from "class-val
 
 export class AdminDTOForEntity { 
 
+    @IsOptional()  
+    @IsNotEmpty()
+    id: number;
+    
     @IsOptional() // when updating, if value was not given, validation won't apply.
-    @MinLength(6)                // if value was given, validation will apply.
-    @MaxLength(30)
+    @IsNotEmpty()
+    @MinLength(50)                // if value was given, validation will apply.
+    @MaxLength(100)
     @Matches(/^[a-zA-Z ]*$/, {
         message: 'Input should only contain letters and spaces.',
     })    
-    name : string;
+    fullname : string;
     
     @IsOptional()  
     @IsNotEmpty()              
     @MinLength(10)
     @MaxLength(100)
-    address : string
+    username : string
 
     @IsOptional() 
     @IsNotEmpty()  
-    @MaxLength(70)
-    email : string
-
-    @IsOptional()
-    @IsNotEmpty()
-    type : number
+    password : string
 }
