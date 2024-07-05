@@ -1,15 +1,46 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, Delete, Res, UploadedFile, UseInterceptors, UsePipes, ValidationPipe, Put } from "@nestjs/common";
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Delete, Res, UploadedFile, UseInterceptors, UsePipes, ValidationPipe, Put, Session, UseGuards } from "@nestjs/common";
 import { AdminService } from "./admin.service";
 import { Admins } from "src/Entity/admin.entity";
-import { AdminDTOForEntity } from "src/DTO/admin.dto";
+import { AdminDTOForEntity, AdminLoginDTO } from "src/DTO/admin.dto";
 import { Managers } from "src/Entity/manager.entity";
+import { AdminGuard } from "./Authorization/admin.guard";
 
 @Controller('admin')
 export class AdminController {
 constructor(private readonly adminService:AdminService) {}
 
-    @Post('add') // add admin to database
-    async createAdmin(@Body() admins: Admins): Promise<Admins> {
+    /* --------------------------- Login ---------------------------*/
+    @Post('login')
+    @UsePipes(new ValidationPipe())
+    async Login(@Body() admins: AdminLoginDTO, @Session() session): Promise<any>{
+      const res = await this.adminService.Login(admins); // catching the response returned by service
+      if(res.success == true){
+        session.user = res.user; // a full object returned by service
+        console.log("Login Successfull as User : "+session.user.username+", ID: "+session.user.id);
+      }else{
+        return this.adminService.Login(admins);
+      }
+    }
+
+    /* --------------------------- Logout ---------------------------*/
+
+    @Get('logout')
+    logout(@Session() session): void {
+      session.destroy((err) => {
+        if (err) {
+          console.log('Session destruction error:', err);
+        } else {
+          console.log("Log out successfull..");
+        }
+      });
+    }
+
+    /* -------------------- Operation --------------------- */
+
+    @Post('add')
+    @UseGuards(AdminGuard) // (request validation) -- i.e. accessible only to admin
+    @UsePipes(new ValidationPipe()) // validation on the DTO
+    async createAdmin(@Body() admins: AdminDTOForEntity): Promise<Admins> {
         try {
             return await this.adminService.createAdmin(admins); 
         } catch (error) {
@@ -27,8 +58,10 @@ constructor(private readonly adminService:AdminService) {}
     }
 
     @Get('getall') // show all admin
-    async getAllAdmin() : Promise<Admins[]> {
+    @UseGuards(AdminGuard) // accessible only to admin
+    async getAllAdmin(@Session() session) : Promise<Admins[]> {
         try {
+            console.log(session.user.username); // showing the data of session
             return await this.adminService.getAllAdmin();
         } catch (error) {
             throw new Error(error.message);

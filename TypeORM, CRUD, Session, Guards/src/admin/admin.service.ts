@@ -1,9 +1,10 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { ManagerDTOForEntity } from "src/DTO/manager.dto";
 import { Admins } from "src/Entity/admin.entity";
 import { Managers } from "src/Entity/manager.entity";
 import { Repository } from "typeorm";
+import  * as bcrypt from 'bcrypt';
+import { AdminDTOForEntity, AdminLoginDTO } from "src/DTO/admin.dto";
 
 @Injectable()
 export class AdminService{
@@ -12,8 +13,31 @@ export class AdminService{
         @InjectRepository(Managers) private managerRepo: Repository<Managers>
       ) {}
 
-    async createAdmin(admins:Admins) : Promise<Admins> {
+    async Login(obj: AdminLoginDTO): Promise<{ success: boolean; user?: { id: number; username: string } }> {
+        /*
+            Promise -  Only return the id and username of obj and a success prop. as boolean
+        */
+        const exobj = await this.adminRepo.findOneBy({username:obj.username});
+        if(exobj){
+            const isMatch = await bcrypt.compare(obj.password,exobj.password);
+            if(isMatch){
+                const user = { id: exobj.id, username: exobj.username };
+                return { success: true, user};
+            }else{
+                throw new HttpException('Mismatch..', HttpStatus.UNAUTHORIZED);
+            }
+        }else{
+            throw new HttpException('Object not found..', HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    
+    async createAdmin(admins:AdminDTOForEntity) : Promise<Admins> {
         try {
+            const salt = await bcrypt.genSalt();
+            const hashedPass = await bcrypt.hash(admins.password,salt);
+            admins.password = hashedPass;
+
             return this.adminRepo.save(admins);
         } catch (error) {
             throw new Error(error.message);
