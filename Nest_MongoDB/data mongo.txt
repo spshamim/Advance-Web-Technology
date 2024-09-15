@@ -1,0 +1,34 @@
+{
+    "u_name": "shahriar01",
+    "u_email": "shahriar01@gmail.com",
+    "u_password": "qwertY2@",
+    "u_role": "Patient"
+}
+{
+    "u_name": "Abdul001",
+    "u_email": "Abdul001@gmail.com",
+    "u_password": "abcdEF2@",
+    "u_role": "Pharmacies"
+}
+{
+    "u_name": "Kamal001",
+    "u_email": "Kamal001@gmail.com",
+    "u_password": "abcdEF2@",
+    "u_role": "Pharmacies"
+}
+=============================
+Add pharmacy
+{
+  "pharma_name": "Lab Aid Pharma",
+  "pharma_address": "Khilkhet, Dhaka",
+  "pharma_contact": "0987654321",
+  "pharma_status": "Active", 
+  "user": { "$oid": "66e56354aa5d2db46955996d" }
+}
+=======================
+Add pharmacy_medicine
+{
+  "Med_name": "Ibuprofen",
+  "pharmacy": { "$oid": "66e565ce76b73ebacaaeead0" }
+  "medicine": { "$oid": "66e560a776b73ebacaaeeac0" }
+}
