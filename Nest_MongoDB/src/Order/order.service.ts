@@ -163,7 +163,7 @@ export class OrderService {
 
     session.cart[patientId] = []; // Clearing the user's cart after placing the order
 
-    const to = "spshamim90@gmail.com";
+    const to = "tosend@gmail.com";
     const subject = 'Order Confirmed';
     const htmlContent = ORDER_PLACE_TEMPLATE
                         .replace("{userName}", patient.p_name)

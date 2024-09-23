@@ -64,7 +64,7 @@ export class AuthService {
       }
 
       // Send email
-      const to = "spshamim90@gmail.com";
+      const to = "tosend@gmail.com";
       const subject = 'Congratulations!';
       const htmlContent = ACCOUNT_OPEN_TEMPLATE
                           .replace("{userName}", savedUser.u_name);    
@@ -91,7 +91,7 @@ export class AuthService {
       const encryptedMail = encrypt(obj.email);
       const combinedToken = `${encryptedToken}-${encryptedMail}`;
 
-      const eemail = "spshamim90@gmail.com";
+      const eemail = "tosend@gmail.com";
       const subject = 'Reset Password';
       const resetLink = `http://localhost:7000/auth/reset-password?token=${combinedToken}`;
       const htmlContent = PASSWORD_RESET_REQUEST_TEMPLATE
@@ -122,7 +122,7 @@ export class AuthService {
     user.resetCode = null;
     await user.save();
 
-    const eeeemail = "spshamim90@gmail.com";
+    const eeeemail = "tosend@gmail.com";
     const subject = 'Password Reset Successful';
     const htmlContent = PASSWORD_RESET_SUCCESS_TEMPLATE.replace('{userName}', user.u_name);
 

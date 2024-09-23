@@ -11,8 +11,8 @@ import { MMailerService } from './mailer.service';
         port: 465,
         secure: true,
         auth: {
-          user: 'error40.u@gmail.com',
-          pass: 'zihz zgri qjym vjhk', // app password
+          user: 'mail@gmail.com',
+          pass: 'abc def ghi jkl', // app password
         },
       },
     }),

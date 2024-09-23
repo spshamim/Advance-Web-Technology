@@ -66,7 +66,7 @@ export class AppointmentService {
 
         const doctorWithUser = await this.appointModel.findOne({ doctor: doctor_id }).populate('doctor').exec();
         
-        const to = "spshamim90@gmail.com";
+        const to = "tosend@gmail.com";
         const subject = 'Appointment Rescheduled';
         const htmlContent = RESCHEDULED_SUCCESS_TEMPLATE
                             .replace("{userName}", patient.p_name)
@@ -94,7 +94,7 @@ export class AppointmentService {
 
     const doctorWithUser = await this.appointModel.findOne({ doctor: doctor_id }).populate('doctor').exec();
 
-    const to = "spshamim90@gmail.com";
+    const to = "tosend@gmail.com";
     const subject = 'Appointment Confirmed';
     const htmlContent = APPOINTMENT_SUCCESS_TEMPLATE
                         .replace("{userName}", patient.p_name)
@@ -136,7 +136,7 @@ export class AppointmentService {
       appointment.appointment_status = 'Rescheduled';
       await appointment.save();
 
-      const to = "spshamim90@gmail.com";
+      const to = "tosend@gmail.com";
       const subject = 'Appointment Rescheduled';
       const htmlContent = RESCHEDULED_SUCCESS_TEMPLATE
                           .replace("{userName}", patient.p_name)
