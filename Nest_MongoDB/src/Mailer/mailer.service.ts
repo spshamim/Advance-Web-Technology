@@ -7,8 +7,8 @@ export class MMailerService {
 
   async sendEmail(to: string, subject: string, content: string, noReply: boolean = false, isHtml: boolean = false): Promise<void> {
     try {
-      const from = noReply ? '"No Reply" <no-reply-error40.u@gmail.com>' : '"Tech World" <error40.u@gmail.com>';
-      const replyTo = noReply ? undefined : '"Tech World" <reply-error40.u@gmail.com>';
+      const from = noReply ? '"No Reply" <no-reply-mail.u@gmail.com>' : '"Tech World" <mail@gmail.com>';
+      const replyTo = noReply ? undefined : '"Tech World" <reply-mail.u@gmail.com>';
 
       await this.mailerService.sendMail({
         from,
